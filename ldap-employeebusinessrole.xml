@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Bundle PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Bundle created="1670386617619" displayName="Employee" id="7f00000184ea13228184eacd0d1300f1" modified="1670407630294" name="employeebusinessrole" type="business">
+  <Attributes>
+    <Map>
+      <entry key="accountSelectorRules"/>
+      <entry key="allowDuplicateAccounts" value="false"/>
+      <entry key="allowMultipleAssignments" value="false"/>
+      <entry key="mergeTemplates" value="false"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" id="c0a8e32a84b711c38184b771e24600ea" name="spadmin"/>
+  </Owner>
+  <Requirements>
+    <Reference class="sailpoint.object.Bundle" id="7f00000184ea13228184eaca7e2400e9" name="employeerole"/>
+  </Requirements>
+  <Selector>
+    <IdentitySelector>
+      <MatchExpression>
+        <MatchTerm name="employeetype" type="IdentityAttribute" value="Employee"/>
+      </MatchExpression>
+    </IdentitySelector>
+  </Selector>
+</Bundle>

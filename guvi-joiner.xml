@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Workflow PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Workflow explicitTransitions="true" libraries="Identity" name="guvi-joiner new" type="IdentityLifecycle">
+  <Variable name="project" transient="true"/>
+  <Variable input="true" name="identityName">
+    <Description>The name of the identity.</Description>
+  </Variable>
+  <Variable input="true" name="plan"/>
+  <Variable input="true" name="event" transient="true">
+    <Description>The IdentityChangeEvent. It can be used to build 
+      the provisioning plan, but does not need to be 
+      persisted with the case, so marked as transient.</Description>
+  </Variable>
+  <Variable input="true" name="trigger">
+    <Description>The IdentityTrigger</Description>
+  </Variable>
+  <Description>Process a new joiners.</Description>
+  <Step icon="Start" name="Start" posX="28" posY="10" wait="1">
+    <Transition to="create provisioning plan"/>
+  </Step>
+  <Step icon="Stop" name="Stop" posX="612" posY="10"/>
+  <Step action="compileProvisioningProject" icon="Default" name="compile plan" posX="320" posY="10" resultVariable="project">
+    <Arg name="plan" value="ref:plan"/>
+    <Transition to="provision project"/>
+  </Step>
+  <Step action="rule:Guvi-Joiner-Create-Provisioning Plan" icon="Default" name="create provisioning plan" posX="98" posY="10" resultVariable="plan">
+    <Arg name="identityname" value="ref:identityName"/>
+    <Transition to="compile plan"/>
+  </Step>
+  <Step action="provisionProject" icon="Default" name="provision project" posX="446" posY="10" resultVariable="project">
+    <Arg name="project" value="ref:project"/>
+    <Transition to="Stop"/>
+  </Step>
+</Workflow>
