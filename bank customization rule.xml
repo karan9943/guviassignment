@@ -45,7 +45,7 @@ Initially designed for non-rule based connectors to add SPPrivileged flag to an 
       </Argument>
     </Returns>
   </Signature>
-  <Source>import sailpoint.object.resourceObject;
+  <Source>import sailpoint.object.ResourceObject;
 
 boolean disabled = object.get("disabled");
 
